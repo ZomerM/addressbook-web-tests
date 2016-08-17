@@ -17,6 +17,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.openqa.selenium.OutputType.*;
 
 public class GroupCreationTests4 {
+	public static class GroupData {
+		public String name;
+		public String header;
+		public String footer;
+		public String huinya;
+	
+		public GroupData(String name, String header, String footer, String huinya) {
+			this.name = name;
+			this.header = header;
+			this.footer = footer;
+			this.huinya = huinya;
+		}
+	}
+
 	ChromeDriver wd;
 
 	@Before
@@ -44,10 +58,9 @@ public class GroupCreationTests4 {
 	@Test
 	public void testGroupCreation4() {
 		wd.get("http://localhost/addressbook/group.php");
-		login("admin", "secret");
 		gotoGroupPage();
 		initGroupCreation();
-		fillGroupForm(new GroupData("tset", "test1", "test2"), "test3");
+		fillGroupForm(new GroupData("tset", "test1", "test2", "test3"));
 		submitGroupCreation();
 		returnToGroupPage();
 	}
@@ -60,19 +73,19 @@ public class GroupCreationTests4 {
 		wd.findElement(By.name("submit")).click();
 	}
 
-	private void fillGroupForm(GroupData parameterObject, String huinya) {
-		wd.findElement(By.parameterObject.name("group_name")).click();
-		wd.findElement(By.parameterObject.name("group_name")).clear();
-		wd.findElement(By.parameterObject.name("group_name")).sendKeys(parameterObject.name);
-		wd.findElement(By.parameterObject.name("group_name")).click();
-		wd.findElement(By.parameterObject.name("group_name")).clear();
-		wd.findElement(By.parameterObject.name("group_name")).sendKeys(parameterObject.header);
-		wd.findElement(By.parameterObject.name("group_header")).click();
-		wd.findElement(By.parameterObject.name("group_header")).clear();
-		wd.findElement(By.parameterObject.name("group_header")).sendKeys(parameterObject.footer);
-		wd.findElement(By.parameterObject.name("group_footer")).click();
-		wd.findElement(By.parameterObject.name("group_footer")).clear();
-		wd.findElement(By.parameterObject.name("group_footer")).sendKeys(huinya);
+	private void fillGroupForm(GroupData groupData) {
+		wd.findElement(By.name("group_name")).click();
+		wd.findElement(By.name("group_name")).clear();
+		wd.findElement(By.name("group_name")).sendKeys(groupData.name);
+		wd.findElement(By.name("group_name")).click();
+		wd.findElement(By.name("group_name")).clear();
+		wd.findElement(By.name("group_name")).sendKeys(groupData.header);
+		wd.findElement(By.name("group_header")).click();
+		wd.findElement(By.name("group_header")).clear();
+		wd.findElement(By.name("group_header")).sendKeys(groupData.footer);
+		wd.findElement(By.name("group_footer")).click();
+		wd.findElement(By.name("group_footer")).clear();
+		wd.findElement(By.name("group_footer")).sendKeys(groupData.huinya);
 	}
 
 	private void initGroupCreation() {
