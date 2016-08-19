@@ -1,20 +1,13 @@
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class TestBase {
+public class ApplicationManager {
 
 	protected ChromeDriver wd;
-
-	@Before
-	public void setUp() throws Exception {
-		init();
-	}
 
 	public void init() {
 		wd = new ChromeDriver();
@@ -58,11 +51,6 @@ public class TestBase {
 
 	public void gotoGroupPage() {
 		wd.findElement(By.linkText("groups")).click();
-	}
-
-	@After
-	public void tearDown() {
-		stop();
 	}
 
 	public void stop() {
