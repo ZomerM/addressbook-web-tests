@@ -1,3 +1,4 @@
+package model;
 
 public class GroupData {
 	public String name;

@@ -1,5 +1,8 @@
+package tests;
 import org.junit.After;
 import org.junit.Before;
+
+import appmanager.ApplicationManager;
 
 public class TestBase {
 	protected final ApplicationManager app = new ApplicationManager();

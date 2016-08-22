@@ -1,5 +1,8 @@
+package tests;
 import org.junit.Test;
 import org.openqa.selenium.By;
+
+import model.GroupData;
 
 public class GroupCreationTests extends TestBase {
 	@Test
