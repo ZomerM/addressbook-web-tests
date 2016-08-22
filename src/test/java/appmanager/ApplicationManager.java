@@ -10,7 +10,7 @@ import model.GroupData;
 
 public class ApplicationManager {
 
-	protected ChromeDriver wd;
+	ChromeDriver wd;
 
 	public void init() {
 		wd = new ChromeDriver();
