@@ -7,7 +7,10 @@ import model.GroupData;
 
 public class GroupHelper {
 
-	protected ChromeDriver wd;
+	ChromeDriver wd;
+	public GroupHelper(ChromeDriver wd) {
+		this.wd = wd;
+	}
 
 	public void returnToGroupPage() {
 		wd.findElement(By.linkText("group page")).click();
