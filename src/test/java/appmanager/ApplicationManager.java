@@ -52,7 +52,6 @@ public class ApplicationManager {
 	public void initGroupCreation() {
 		wd.findElement(By.name("new")).click();
 	}
-
 	public void stop() {
 		wd.quit();
 	}

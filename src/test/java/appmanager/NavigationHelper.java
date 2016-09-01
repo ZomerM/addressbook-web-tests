@@ -6,6 +6,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class NavigationHelper {
 
 	public ChromeDriver wd;
+	public NavigationHelper(ChromeDriver wd) {
+		this.wd = wd;
+	}
+
 	public void gotoGroupPage() {
 		wd.findElement(By.linkText("groups")).click();
 	}
