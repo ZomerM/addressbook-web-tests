@@ -9,13 +9,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import model.GroupData;
 
 public class ApplicationManager {
-
-	ChromeDriver wd;
-
+	public ChromeDriver wd;
+	private NavigationHelper navigationHelper = new NavigationHelper(wd);
+	
 	public void init() {
 		wd = new ChromeDriver();
 		wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		login("admin", "secret");
+		setNavigationHelper(new NavigationHelper(wd));
 	}
 
 	public void login(String login, String password) {
@@ -52,10 +53,6 @@ public class ApplicationManager {
 		wd.findElement(By.name("new")).click();
 	}
 
-	public void gotoGroupPage() {
-		wd.findElement(By.linkText("groups")).click();
-	}
-
 	public void stop() {
 		wd.quit();
 	}
@@ -75,6 +72,14 @@ public class ApplicationManager {
 		} catch (NoAlertPresentException e) {
 			return false;
 		}
+	}
+
+	public NavigationHelper getNavigationHelper() {
+		return navigationHelper;
+	}
+
+	public void setNavigationHelper(NavigationHelper navigationHelper) {
+		this.navigationHelper = navigationHelper;
 	}
 
 }
