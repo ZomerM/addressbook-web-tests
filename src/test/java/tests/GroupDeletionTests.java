@@ -1,4 +1,5 @@
 package tests;
+
 import org.junit.Test;
 
 public class GroupDeletionTests extends TestBase {

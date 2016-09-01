@@ -1,4 +1,5 @@
 package appmanager;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -11,24 +12,14 @@ import model.GroupData;
 public class ApplicationManager {
 	public ChromeDriver wd;
 	private NavigationHelper navigationHelper = new NavigationHelper(wd);
-	
+	private SessionHelper sessinHelper;
+
 	public void init() {
 		wd = new ChromeDriver();
 		wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		login("admin", "secret");
+		sessinHelper = new SessionHelper(wd);
+		sessinHelper.login("admin", "secret");
 		setNavigationHelper(new NavigationHelper(wd));
-	}
-
-	public void login(String login, String password) {
-		wd.get("http://localhost/addressbook/");
-		wd.findElement(By.name("pass")).click();
-		wd.findElement(By.name("pass")).clear();
-		wd.findElement(By.name("pass")).sendKeys(password);
-		wd.findElement(By.name("user")).click();
-		wd.findElement(By.name("user")).clear();
-		wd.findElement(By.name("user")).sendKeys(login);
-		wd.findElement(By.id("LoginForm")).click();
-		wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
 	}
 
 	public void returnToGroupPage() {
@@ -52,6 +43,7 @@ public class ApplicationManager {
 	public void initGroupCreation() {
 		wd.findElement(By.name("new")).click();
 	}
+
 	public void stop() {
 		wd.quit();
 	}
@@ -79,6 +71,10 @@ public class ApplicationManager {
 
 	public void setNavigationHelper(NavigationHelper navigationHelper) {
 		this.navigationHelper = navigationHelper;
+	}
+
+	public void gotoGroupPage() {
+
 	}
 
 }
